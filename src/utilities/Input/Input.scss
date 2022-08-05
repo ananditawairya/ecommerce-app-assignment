@@ -1,0 +1,44 @@
+.input_container{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-radius: 4px;
+}
+
+input{
+    width: 100%;
+    height: 100%;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    background: transparent;
+    color: rgb(38, 52, 46);
+    border-bottom-color: #607d8b;
+    padding: 20px 0px 6px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+label{
+    position: absolute;
+    display: block;
+    top: 50%;
+    transform: translateY(-50%);
+    transform-origin: top left;
+    color: #607d8b;;
+    font-weight: 500;
+}
+
+input:focus {
+    outline: none;
+    border-bottom-width: 2px;
+    border-bottom-color: rgb(11, 177, 177);
+}
+
+input:focus + label{
+    color: rgb(11, 177, 177);;
+}
+
+input:focus + label{
+    color: rgb(11, 177, 177);;
+    transform: translateY(-100%) scale(0.75);
+}

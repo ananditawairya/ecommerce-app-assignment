@@ -1,0 +1,59 @@
+.navbar{
+    background-color: aquamarine;
+    display: flex;
+  //  height: calc(100vh * 12/100);
+    justify-content: space-around;
+}
+
+.add_to_cart{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: flex-start;
+  border: none;
+  padding: 15px;
+  font-size: 1rem;
+}
+
+.navbar_end{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: pink;
+    width: 9%;
+}
+
+.logo{
+    height: 100%;
+}
+
+.cart_image{
+    width: 30%;
+    margin-right: 10px
+}
+
+.authentication_links{
+
+    font-size: 13px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sign_in{
+    margin-right: 10%;
+}
+
+.navigation_links{
+    background-color: yellowgreen;
+    margin-left: 100px;
+}
+
+.home{
+    margin-right: 20%;
+}
+
+.navbar-start{
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+}

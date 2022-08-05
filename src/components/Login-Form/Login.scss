@@ -1,0 +1,15 @@
+.login_container{
+    display: flex;
+    justify-content: space-evenly;
+    height: calc(100vh * 40 /100);
+    align-items: center;
+}
+.login_form{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 25%;
+}
+.login_heading{
+    margin-bottom: 30px;
+}

@@ -1,0 +1,37 @@
+.category_card {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 1.5em;
+}
+
+.category_item_details {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.category_name {
+  margin-bottom: 1em;
+}
+
+.category_description {
+  margin-bottom: 2em;
+}
+
+.category_image {
+  width: 20%;
+}
+.home_container {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+.home_page {
+  width: 70%;
+  //  height: calc(100vh * 86 / 100);
+  overflow: scroll;
+}
