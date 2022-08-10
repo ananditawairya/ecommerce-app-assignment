@@ -4,11 +4,12 @@ module.exports={
     entry:"./index.js",
     output:{
         path:path.resolve(__dirname,"public"),
-        filename:"bundle.js"
+        filename:"bundle.js",
+        publicPath: '/',
     },
     target:"web",
     devServer:{
-        port:"3000",
+        port:"3001",
         static:["./public"],
         open:true,
         hot:true,

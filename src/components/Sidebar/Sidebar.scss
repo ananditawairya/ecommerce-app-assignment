@@ -10,3 +10,16 @@
     color: #9d9a9a;
     font-size: 0.90rem;
 }
+
+.sidebar_link{
+    text-decoration: none;
+}
+
+.active{
+    cursor: pointer;
+    color: gray;
+    background: rgb(255, 255, 255);
+    padding: 15px;
+    width: 230px;
+    border-bottom: 2px solid lightgray;
+}

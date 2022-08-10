@@ -8,13 +8,23 @@ import Home from "./components/Home/Home";
 import Login from "./components/Login-Form/Login";
 import Register from "./components/Registration-Form/Register";
 import ProductsListing from "./components/ProductsListing-Page/ProductsListing";
-import { CategoryContext } from "./context/Contexts";
+import { Context } from "./context/Contexts";
 import { Routes, Route } from "react-router-dom";
+
+const userData={
+  fname:"",
+  lname:"",
+  email:"",
+  password:"",
+  cpassword:""
+}
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [categoryData, setCategoryData] = useState(null);
-
+  const [cartData,setCartData]=useState({})
+  const [userValidationData,setUserValidationData]=useState({})
+  const [currentUser,setCurrentUser]=useState({})
   useEffect(() => {
     fetch(`http://localhost:3010/categories`)
       .then((res) => res.json())
@@ -28,18 +38,19 @@ const App = () => {
   }, []);
   return (
     <div className="app">
+      <Context.Provider value={{ categoryData, setCategoryData, open, setIsOpen,cartData,setCartData,userValidationData,setUserValidationData,currentUser,setCurrentUser }}>
       <Navbar />
-      <CategoryContext.Provider value={{ categoryData, setCategoryData }}>
         <Routes>
           <Route path="/plp" element={<ProductsListing />} />
+          <Route path="/plp/:id" element={<ProductsListing />} />
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           {/*<Route path="cart" element={<Cart/>} />*/}
         </Routes>
-      </CategoryContext.Provider>
+      </Context.Provider>
       <Footer />
-      {/*<Modal open={isOpen}><Cart setIsOpen={setIsOpen}/></Modal>*/}
+      <Modal open={isOpen}><Cart setIsOpen={setIsOpen} cartData={cartData} setCartData={setCartData}/></Modal>
     </div>
   );
 };

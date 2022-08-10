@@ -1,9 +1,15 @@
-import React from "react";
+import React,{useContext} from "react";
 import logo from "../../../public/static/images/logo.png";
 import "./Navbar.scss";
 import Cart from "../../Icons/Cart";
 import {Outlet,Link} from "react-router-dom"
+import { Context } from '../../context/Contexts';
+import Button from "../../utilities/Button/Button";
 function Navbar() {
+  const { cartData,setIsOpen,currentUser , setCurrentUser } = useContext(Context);
+  const logout =()=>{
+    setCurrentUser({});
+  }
   return (
     <>
       <nav className="navbar">
@@ -15,18 +21,21 @@ function Navbar() {
           </div>
         </div>
         <div className="navbar_end">
-          <div className="authentication_links">
+          {Object.keys(currentUser).length ? (<div>
+            <h3>{currentUser.Name}</h3>
+            <Button handleButtonClick ={logout} buttonText="Logout"></Button>
+            </div>): (<div className="authentication_links">
             <Link to="login" className="sign_in">
               Sign In
             </Link>
             <Link to="register" className="register">
               Register
             </Link>
-          </div>
+          </div>)}
           <div className="button-container">
-            <button className="add_to_cart">
+            <button className="add_to_cart" onClick={()=>setIsOpen(true)}>
               <Cart fill="#e91e63" className="cart_image" />
-              <span className="">0 Items</span>
+              <span className="">{Object.keys(cartData).length} Items</span>
             </button>
           </div>
         </div>

@@ -1,12 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import "./Home.scss";
 import Button from "../../utilities/Button/Button";
-import { CategoryContext } from "../../context/Contexts";
-import CarousalItem from "../../utilities/CarousalItem/CarousalItem";
-import Carousal from "../../utilities/Carousal/Carousal";
+import { Context } from "../../context/Contexts";
+import {Link} from "react-router-dom"
 function Home() {
-  const { categoryData } = useContext(CategoryContext);
+  const { categoryData } = useContext(Context);
   const [banner, setBanner] = useState(null);
+  const [bannerCount,setBannerCount]=useState(1)
+  
   useEffect(() => {
     fetch(`http://localhost:3010/banners`)
       .then((res) => res.json())
@@ -19,30 +20,55 @@ function Home() {
       .catch((err) => console.log(err));
   }, []);
 
+  const slideNumber=(num)=>{
+    if(bannerCount===1 && num < 0) setBannerCount(banner?.length)
+    else if(bannerCount===banner?.length && num>0) setBannerCount(1)
+    else setBannerCount(bannerCount+num)
+  }
+
+  const currentSlide=(number)=>{
+      setBannerCount(number)
+  }
+
   return (
     <div className="home_container">
       <div className="home_page">
-        <div className="banner_container">
-     {   /* <Carousal>
+        <div className="slideshow_container">
+
+          <button className="prev" onClick={()=>slideNumber(-1)}>Prev</button>
+
+
+          {banner?.map((data) => {
+            if (data.isActive) {
+              return (
+                
+                <div className={`my_slides fade ${data.order===bannerCount ? 'visible' : 'hidden'}`} key={data.id}>
+                  <img
+                    src={data.bannerImageUrl}
+                    alt={data.bannerImageAlt}
+                    className="banner_image"
+                    style={{ width: "100%" }}
+                  />
+                </div>
+
+              );
+            }
+          })}
+
+        <div style={{ textAlign: "center" }}>
             {banner?.map((data) => {
               if (data.isActive) {
                 return (
-         <CarousalItem>
-           
-                  <div className="banner_content" key={data.id}>
-                    <img
-                      src={data.bannerImageUrl}
-                      alt={data.bannerImageAlt}
-                      className="banner_image"
-                    />
-                  </div>
-            </CarousalItem>
-                  
-                );
+                    <span className="dot" onClick={()=>currentSlide(data.order)} key={data.id}></span>
+                 );
               }
             })}
-            </Carousal> */}
+          </div>
+
+          <button className="next" onClick={()=>slideNumber(1)}>Next</button>
         </div>
+
+
         <div className="category_data">
           {categoryData?.map((data) => {
             if (data.order > 0) {
@@ -57,10 +83,12 @@ function Home() {
                     <div className="category_item_details">
                       <h1 className="category_name">{data.name}</h1>
                       <p className="category_description">{data.description}</p>
+                      <Link to={`/plp/${data.id}`}>
                       <Button
                         className="category_action"
                         buttonText={`Explore ${data.key}`}
                       />
+                      </Link>
                     </div>
                   </article>
                 );
@@ -70,10 +98,12 @@ function Home() {
                     <div className="category_item_details">
                       <h1 className="category_name">{data.name}</h1>
                       <p className="category_description">{data.description}</p>
+                      <Link to={`/plp/${data.id}`}>
                       <Button
                         className="category_action"
                         buttonText={`Explore ${data.key}`}
                       />
+                      </Link>
                     </div>
                     <img
                       src={`${data.imageUrl}`}

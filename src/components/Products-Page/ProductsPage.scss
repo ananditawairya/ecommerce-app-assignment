@@ -1,8 +1,7 @@
 .products_card_list{
     display: grid;
-    grid-template-columns: repeat(4 ,250px);
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     column-gap: 10px;
-    align-items: center;
 }
 
 .item_purchase_section{
@@ -10,14 +9,16 @@
  flex-direction: row;
  justify-content: space-between;
  align-items: center;
+ width: 100%;
 }
 
 .item_details{
-    width: 240px;
+    width: 100%;
 }
 
 .item_image{
     width: 100%;
+    height: 200px;
 }
 
 .product_card{
@@ -35,7 +36,16 @@
 } 
 
 .image_description{
-    background-color: #c5c5c5;
+    // background-color: #c5c5c5;
+    // height: 165px;
+    // overflow: hidden;
+    // text-overflow: ellipsis; 
+    background-color: #eaeaea;
+    height: 130px;
+    padding: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: small;
 }
 
 .buy{
@@ -44,4 +54,9 @@
 
 .products_section{
     width: 60%;
+}
+
+.item_name{
+    width: 100%;
+    height: 50px;
 }
