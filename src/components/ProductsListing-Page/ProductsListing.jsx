@@ -5,8 +5,8 @@ import ProductsPage from '../Products-Page/ProductsPage'
 function ProductsListing() {
   return (
     <div className='products-listing-page'>
-      <Sidebar/>
-      <ProductsPage/>
+      <Sidebar  />
+      <ProductsPage   />
     </div>
   )
 }

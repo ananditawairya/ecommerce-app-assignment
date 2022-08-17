@@ -1,8 +1,11 @@
 .navbar{
-    background-color: aquamarine;
     display: flex;
   //  height: calc(100vh * 12/100);
     justify-content: space-around;
+
+    @media only screen and (max-width:850px){
+        justify-content: space-between;
+    }
 }
 
 .add_to_cart{
@@ -19,8 +22,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: pink;
-    width: 9%;
 }
 
 .logo{
@@ -28,7 +29,7 @@
 }
 
 .cart_image{
-    width: 30%;
+    width: 30px;
     margin-right: 10px
 }
 
@@ -44,7 +45,6 @@
 }
 
 .navigation_links{
-    background-color: yellowgreen;
     margin-left: 100px;
 }
 
@@ -56,4 +56,16 @@
     display: grid;
     grid-template-columns: auto auto;
     align-items: center;
+}
+
+.links{
+    color: #555151;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth_links{
+    color: #18191d;
+    text-decoration: none;
+    font-weight: 600;
 }

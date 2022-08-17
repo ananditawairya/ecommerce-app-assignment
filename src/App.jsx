@@ -9,7 +9,7 @@ import Login from "./components/Login-Form/Login";
 import Register from "./components/Registration-Form/Register";
 import ProductsListing from "./components/ProductsListing-Page/ProductsListing";
 import { Context } from "./context/Contexts";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 const userData={
   fname:"",
@@ -25,6 +25,9 @@ const App = () => {
   const [cartData,setCartData]=useState({})
   const [userValidationData,setUserValidationData]=useState({})
   const [currentUser,setCurrentUser]=useState({})
+  const [categorySelection,setCategorySelection] =useState({})
+  const [lastState,setLastState] = useState(null);
+
   useEffect(() => {
     fetch(`http://localhost:3010/categories`)
       .then((res) => res.json())
@@ -38,7 +41,8 @@ const App = () => {
   }, []);
   return (
     <div className="app">
-      <Context.Provider value={{ categoryData, setCategoryData, open, setIsOpen,cartData,setCartData,userValidationData,setUserValidationData,currentUser,setCurrentUser }}>
+      <Context.Provider value={{ categoryData, setCategoryData, open, setIsOpen,cartData,setCartData,userValidationData,setUserValidationData,currentUser,setCurrentUser, categorySelection,setCategorySelection, 
+      lastState,setLastState}}>
       <Navbar />
         <Routes>
           <Route path="/plp" element={<ProductsListing />} />
@@ -46,7 +50,10 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
-          {/*<Route path="cart" element={<Cart/>} />*/}
+          <Route
+            path="*"
+            element={<Navigate to="/" replace />}
+        />
         </Routes>
       </Context.Provider>
       <Footer />

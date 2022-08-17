@@ -21,7 +21,8 @@
 }
 
 .category_image {
-  width: 20%;
+  min-width: 150px;
+  max-width: 250px;
 }
 
 .home_container {
@@ -34,8 +35,11 @@
 
 .home_page {
   width: 70%;
-  //  height: calc(100vh * 86 / 100);
-  // overflow: scroll;
+  
+  @media only screen and (max-width:850px){
+    width: 100%;
+    padding: 10px;
+  }
 }
 
 //carousal css--->
@@ -70,6 +74,11 @@ img {
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
+
+  @media only screen and (max-width:450px){
+      padding: 8px;
+      font-size: 12px;
+  }
 }
 
 /* Position the "next button" to the right */

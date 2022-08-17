@@ -16,8 +16,8 @@ function Navbar() {
         <div className="navbar-start">
           <img src={logo} alt="Sabka Bazaar Homepage." className="logo"></img>
           <div className="navigation_links">
-          <Link to="" className="home">Home</Link>
-          <Link to="plp" className="products">Products</Link>
+          <Link to="" className="home links">Home</Link>
+          <Link to="plp" className="products links">Products</Link>
           </div>
         </div>
         <div className="navbar_end">
@@ -25,10 +25,10 @@ function Navbar() {
             <h3>{currentUser.Name}</h3>
             <Button handleButtonClick ={logout} buttonText="Logout"></Button>
             </div>): (<div className="authentication_links">
-            <Link to="login" className="sign_in">
+            <Link to="login" className="sign_in auth_links">
               Sign In
             </Link>
-            <Link to="register" className="register">
+            <Link to="register" className="register auth_links">
               Register
             </Link>
           </div>)}

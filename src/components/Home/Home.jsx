@@ -4,7 +4,7 @@ import Button from "../../utilities/Button/Button";
 import { Context } from "../../context/Contexts";
 import {Link} from "react-router-dom"
 function Home() {
-  const { categoryData } = useContext(Context);
+  const { categoryData,setCategorySelection,setLastState } = useContext(Context);
   const [banner, setBanner] = useState(null);
   const [bannerCount,setBannerCount]=useState(1)
   
@@ -28,6 +28,11 @@ function Home() {
 
   const currentSlide=(number)=>{
       setBannerCount(number)
+  }
+
+  const handleButtonClick=(dataId)=>{
+    setCategorySelection((prev)=>({...prev,[dataId]:true}))
+    setLastState(dataId)
   }
 
   return (
@@ -87,6 +92,7 @@ function Home() {
                       <Button
                         className="category_action"
                         buttonText={`Explore ${data.key}`}
+                        handleButtonClick={()=>handleButtonClick(data.id)}
                       />
                       </Link>
                     </div>
@@ -102,6 +108,7 @@ function Home() {
                       <Button
                         className="category_action"
                         buttonText={`Explore ${data.key}`}
+                        handleButtonClick={()=>handleButtonClick(data.id)}
                       />
                       </Link>
                     </div>

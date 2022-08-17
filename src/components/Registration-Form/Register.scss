@@ -1,14 +1,22 @@
 .registration_container{
     display: flex;
     justify-content: space-evenly;
-    height: calc(100vh * 60 /100);
+    min-height: calc(100vh * 60 /100);
     align-items: center;
+    padding: 1.5em 0;
+    gap: 1.5em;
+    @media only screen and (max-width:520px) {
+        flex-direction: column;
+    }
 }
 .registration_form{
     display: flex;
     flex-direction: column;
     gap: 30px;
     width: 25%;
+    @media only screen and (max-width:520px) {
+        width: 95%;
+    }
 }
 .registration_heading{
     margin-bottom: 30px;

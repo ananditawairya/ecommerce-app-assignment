@@ -7,9 +7,9 @@ import {addItemToCart} from "../../utilities/CommonFunctions/utils"
 function ProductsPage() {
 const [productsData, setProductsData] = useState(null);
 const {id} = useParams()
-const { setCartData,cartData } = useContext(Context);
+const { setCartData,cartData,categorySelection } = useContext(Context);
 
-    useEffect(() => {
+    useEffect( () => {
       fetch(`http://localhost:3010/products`)
         .then((res) => res.json())
         .then((data) => {
@@ -33,7 +33,7 @@ const { setCartData,cartData } = useContext(Context);
   return (
     <section className='products_section'>
             <div className='products_card_list'>
-            {(id ? productsData?.filter(data=>id===data.category) : productsData)?.map((data)=>{
+            {(id && categorySelection[id] ? productsData?.filter(data=>id===data.category) : productsData)?.map((data)=>{
                
                 return <div className="product_card" key={data.id}>
                   <div className="item_name">
