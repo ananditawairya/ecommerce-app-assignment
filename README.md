@@ -1,8 +1,5 @@
 # ecommerce-app-assignment : Sabka Bazaar
 
-
-### Note: This fork contains only the fial commit. To see all the comits visit https://github.com/ananditawairya/ecommerce-app-assignment
-
 ## Getting Started
 
 ## Clone the repository and install the dependencies:
