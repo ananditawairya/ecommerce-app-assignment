@@ -1,20 +1,28 @@
-import React,{useContext} from "react";
+import React,{useContext,useEffect,useState} from "react";
 import logo from "../../../public/static/images/logo.png";
 import "./Navbar.scss";
 import Cart from "../../Icons/Cart";
-import {Outlet,Link} from "react-router-dom"
+import {Outlet,Link,useNavigate} from "react-router-dom"
 import { Context } from '../../context/Contexts';
 import Button from "../../utilities/Button/Button";
 function Navbar() {
   const { cartData,setIsOpen,currentUser , setCurrentUser } = useContext(Context);
+  const navigate=useNavigate();
   const logout =()=>{
     setCurrentUser({});
   }
+  const [userIsDesktop, setUserIsDesktop] = useState(true);
+  useEffect(() => {
+
+    window.innerWidth > 960 ? setUserIsDesktop(true) : setUserIsDesktop(false);
+
+  }, [userIsDesktop]);
   return (
     <>
       <nav className="navbar">
         <div className="navbar-start">
-          <img src={logo} alt="Sabka Bazaar Homepage." className="logo"></img>
+          <img src={logo} alt="Sabka Bazaar Homepage." className="logo"
+          onClick={()=>navigate("/",{replace:true})}></img>
           <div className="navigation_links">
           <Link to="" className="home links">Home</Link>
           <Link to="plp" className="products links">Products</Link>
@@ -33,7 +41,7 @@ function Navbar() {
             </Link>
           </div>)}
           <div className="button-container">
-            <button className="add_to_cart" onClick={()=>setIsOpen(true)}>
+            <button className="add_to_cart" onClick={()=>userIsDesktop? setIsOpen(true) : navigate("/cart",{replace:true})}>
               <Cart fill="#e91e63" className="cart_image" />
               <span className="">{Object.keys(cartData).length} Items</span>
             </button>

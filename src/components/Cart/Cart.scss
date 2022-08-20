@@ -1,3 +1,5 @@
+$mobile-size:540px;
+$tablet-size:1023px;
 .cart_container {
     /*OLD cart Css to align in the center 
     position: fixed;
@@ -9,13 +11,31 @@
 
     /* Fixed Cart CSS*/
     position: fixed;
-    top: 26%;
+    top: 20%;
     left: 50%;
     transform: translate(5%,-10%);
-    border: 1px solid black;
+    border: none;
     z-index: 1000;
-    width: 30%;
+    width: 35%;
     background-color: #ccc;
+
+    @media only screen and (min-width:541px) and (max-width:1023px){
+        // top: 15%;
+        top: 10%;
+        left: 0; 
+        transform:none;
+        width:100%;
+        bottom:0em;
+    }
+
+        @media only screen and (max-width:$mobile-size){
+        top: 10%;
+        left: 0; 
+        transform:none;
+        width:100%;
+        bottom:0em;
+    }
+    
 }
 
 .cart_header {
@@ -25,6 +45,10 @@
     background: #18191d;
     color: white;
     padding: 2em 1em 1.5em 1.75em;
+    @media only screen and (max-width:$tablet-size){
+        background: white;
+        color: #18191d;
+    }
 }
 
 .cart_main_contents {
@@ -35,6 +59,11 @@
     height: calc(0.61*100vh);
     overflow-y: auto;
     margin-bottom: 6em;
+
+    @media only screen and (max-width:$tablet-size){
+      height: 75%;
+      margin-bottom: 0;
+    }
 }
 
 .cart_items_details {
@@ -75,6 +104,10 @@
     font-size: 1rem;
     border: none;
     width: 100%;
+    @media only screen and (max-width:$mobile-size) {
+        font-size: 0.9rem;
+        
+    }
 }
 
 .cart_modal {
@@ -104,6 +137,13 @@
     padding: 0.5em;
     font-weight: 600;
     margin: 1em;
+    @media only screen and (max-width:$tablet-size) {
+        margin: 1em 1em 3em;
+    }
+    @media only screen and (max-width:$mobile-size) {
+        font-size: 0.8rem;
+        
+    }
 }
 
 .action_btn_cart{
@@ -114,6 +154,9 @@
     color: white;
     border-radius: 50%;
     font-size: 1.25rem;
+    @media only screen and (max-width:$mobile-size) {
+        font-size: 0.7rem;
+    }
 
 }
 
@@ -130,11 +173,17 @@
 .cart_quantity{
     margin: 0.75em;
     padding: 0.75em;
+    @media only screen and (max-width:$mobile-size) {
+        font-size: 0.7rem;
+    }
 }
 
 .total_item_price{
     // position: absolute;
     // right: 0.75em;
+    @media only screen and (max-width:$mobile-size) {
+        font-size: 0.7rem;
+    }
 }
 
 .align_center{
@@ -147,6 +196,9 @@
 
 .cart_multiply{
     padding: 0 10px;
+    @media only screen and (max-width:$mobile-size) {
+        font-size: 0.7rem;
+    }
 }
 
 .item_purchase_details{
@@ -156,6 +208,10 @@
 .item_name{
     width: 100%;
     height: 50px;
+    font-size: 1rem;
+    @media only screen and (max-width:$mobile-size) {
+        font-size: 0.8rem;
+    }
 }
 
 .start_shopping{
@@ -180,4 +236,10 @@
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #555; 
+  }
+
+  .item_price{
+    @media only screen and (max-width:$mobile-size) {
+        font-size: 0.7rem;
+    }
   }
