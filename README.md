@@ -20,4 +20,4 @@ npm start
 
 json-server --watch db.json --port 3010
 
-## The application can be accessed on http://localhost:3001
+# The application can be accessed on http://localhost:3001
